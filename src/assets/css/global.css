@@ -1,0 +1,30 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 1100px;
+}
+html {
+  /* 解决出垂直滚动栏时 页面的抖动 ie+9*/
+
+  padding-left: calc(100vw - 100%);
+}
+.el-submenu i,
+.el-menu-item i {
+  color: #b3c7ec !important;
+}
+
+.el-breadcrumb {
+  margin-bottom: 15px;
+}
+
+.el-tag {
+  margin: 10px 3px;
+}
+/* 头部面包屑跟头像同一行 */
+.header {
+  display: flex;
+  justify-content: space-between;
+}
