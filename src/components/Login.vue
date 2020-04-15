@@ -159,7 +159,7 @@ export default {
   height: 100%;
 }
 .login_box {
-  width: 350px;
+  width: 400px;
   height: 300px;
   border-radius: 3px;
   background-color: #eee;

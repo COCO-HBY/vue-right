@@ -22,10 +22,11 @@
           </div>
           <div class="role-table">
             <el-table style="width: 100%"
-            stripe :border="true" 
+             :border="true" 
             :data="rolesList" 
             ref="rolesTable"
             @row-click="showRoleMenusRight"
+            :highlight-current-row="true"
             >
               <!-- 展开内容 -->
               <el-table-column type="index" label="#"></el-table-column>

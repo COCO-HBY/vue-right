@@ -94,10 +94,18 @@
                   修改
                   <i class="el-icon-upload el-icon--right"></i>
                 </el-button>
-                <el-button
+                <!-- <el-button
                   v-if="menuItemInfo.id"
                   type="danger"
                   @click="deleteMenuItem(menuItemInfo)"
+                >
+                  删除
+                  <i class="el-icon-delete el-icon--right"></i>
+                </el-button> -->
+                 <el-button
+                  v-if="menuItemInfo.id"
+                  type="danger"
+                  @click="pop"
                 >
                   删除
                   <i class="el-icon-delete el-icon--right"></i>
@@ -185,6 +193,19 @@ export default {
     this.getRightsList();
   },
   methods: {
+    pop(){
+      this.$popup({
+        title:'biaoti',
+        content:'neirong',
+        btnCancleText: 'cancle',
+        btnComfirmText: 'comfirm',
+        btnConfirm: () =>{
+          this.$router.push()
+        },
+        btnCancle: () =>{   
+        }
+      })
+    },
     onIconBlur() {
       this.$refs.menuItemInfoForm.validateField("icon");
     },
