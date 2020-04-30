@@ -105,7 +105,7 @@
                  <el-button
                   v-if="menuItemInfo.id"
                   type="danger"
-                  @click="pop"
+                  @click="pop(menuItemInfo)"
                 >
                   删除
                   <i class="el-icon-delete el-icon--right"></i>
@@ -193,16 +193,35 @@ export default {
     this.getRightsList();
   },
   methods: {
-    pop(){
+    pop(item){
+      let _this = this;
       this.$popup({
-        title:'biaoti',
-        content:'neirong',
-        btnCancleText: 'cancle',
-        btnComfirmText: 'comfirm',
+        title:'提示！',
+        content:"是否删除“ " + item.name + " ”？",
+        btnCancleText: '取消',
+        btnComfirmText: '确定',
         btnConfirm: () =>{
-          this.$router.push()
+           _this.$http
+            .delete(`menu/${item.id}`)
+            .then(function(res) {
+              if (res.data.code !== 200) {
+                return _this.$message.error(res.data.message);
+              }
+              _this.$message.success(res.data.message);
+              _this.selectMenuList = [];
+              _this.getRightsList();
+              _this.submitReflashMenus();
+              _this.$refs.menuItemInfoForm.resetFields();
+              _this.menuItemInfo.pid = null;
+              _this.menuItemInfo.id = '';
+            })
+            .catch(e => e);
         },
-        btnCancle: () =>{   
+        btnCancle: () =>{
+          _this.$message({
+            type: "info",
+            message: "已取消删除"
+          });   
         }
       })
     },

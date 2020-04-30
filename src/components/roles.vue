@@ -128,6 +128,7 @@
 </template>
 
 <script>
+import bus from "../plugins/bus.js";
 export default {
   //组件数据
   data() {
@@ -263,7 +264,13 @@ export default {
       }
       // 更新角色权限数据和视图
       this.getRolesList();
+      this.submitReflashMenus();
       this.$message.success("更新权限成功");
+    },
+
+     //  发送事件 刷新home组件菜单栏
+    submitReflashMenus() {
+      bus.$emit("reflash", this);
     },
 
     putMenuInList(menu, arr){
